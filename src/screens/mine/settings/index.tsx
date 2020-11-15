@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Divider, ListItem } from 'react-native-elements';
-import I18n from '../../../i18n';
+import I18n, { setI18nLocale } from '../../../i18n';
 import Cache from '../../../utils/cache';
 
 const SettingsScreen = ({ navigation }: any) => {
-
-    const [cache, SetCache] = useState(Cache.getCacheSize())
+    const goLanguage = () => {
+        navigation.navigate('MineLayout', { screen: 'Language' });
+    }
 
     return (
         <>
@@ -18,9 +19,9 @@ const SettingsScreen = ({ navigation }: any) => {
                     </ListItem.Content>
                 </ListItem>
                 <Divider></Divider>
-                <ListItem>
+                <ListItem onPress={() => goLanguage()}>
                     <ListItem.Content>
-                        <ListItem.Title>{I18n.t('laugage')}</ListItem.Title>
+                        <ListItem.Title>{I18n.t('language')}</ListItem.Title>
                     </ListItem.Content>
                     <ListItem.Chevron />
                 </ListItem>

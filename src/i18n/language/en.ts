@@ -3,5 +3,9 @@ export default {
     mine: 'mine',
     setting: 'setting',
     cache: 'cache',
-    laugage: 'laugage'
+    language: 'language',
+    setLanguage: 'set language',
+    zh: 'Chinese',
+    en: 'English'
+
 }
