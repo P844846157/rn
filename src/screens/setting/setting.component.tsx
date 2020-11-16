@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Divider, ListItem } from 'react-native-elements';
-import I18n, { setI18nLocale } from '../../../i18n';
-import Cache from '../../../utils/cache';
+import I18n, { setI18nLocale } from '../../i18n';
 
-const SettingsScreen = ({ navigation }: any) => {
+export const SettingScreen = ({ navigation }: any) => {
     const goLanguage = () => {
         navigation.navigate('MineLayout', { screen: 'Language' });
     }
@@ -29,5 +28,3 @@ const SettingsScreen = ({ navigation }: any) => {
         </>
     )
 }
-
-export default SettingsScreen;
