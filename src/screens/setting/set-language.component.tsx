@@ -2,7 +2,7 @@ import React, {useLayoutEffect, useState} from 'react';
 import {Text, View} from 'react-native';
 import {Button, Divider, ListItem} from 'react-native-elements';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import I18n from '../../i18n';
+import I18n from '@i18n';
 
 interface LanguageItemProps {
   key: string;

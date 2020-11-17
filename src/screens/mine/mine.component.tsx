@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {ListItem} from 'react-native-elements';
-import I18n from '../../i18n';
+import I18n from '@i18n';
 
 export const MineScreen = ({navigation}: any) => {
   const goSettings = () => {

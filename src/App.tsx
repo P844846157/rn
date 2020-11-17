@@ -9,10 +9,9 @@
  */
 
 import 'react-native-gesture-handler';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navigation from './navigations/index.navigation';
-import { useBackButton } from '@react-navigation/native';
-import { BackHandler, Platform } from 'react-native'; 
+
 
 const App = (props: any) => {
   return (

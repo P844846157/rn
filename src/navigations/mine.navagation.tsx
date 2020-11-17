@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack';
-import I18n from '../i18n';
-import {SetLauguageScreen, SettingScreen} from '../screens/setting';
+import I18n from '@i18n';
+import {SetLauguageScreen, SettingScreen} from '@screens/setting';
 
 const Stack = createStackNavigator();
 

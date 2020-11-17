@@ -1,51 +1,46 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
-import {Input} from 'react-native-elements';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import pxToDp from '../utils/pxToDp';
+import { StyleSheet, Text, View } from 'react-native';
+import { colors, Input, InputProps } from 'react-native-elements';
+import pxToDp from '@utils/pxToDp';
 
 interface coustomProp {
   label: string;
   leftIconName: string;
 }
 
-const PInput = (props: any) => {
+const PInput = (props: InputProps) => {
+
   const onFoucs = () => {
     console.log(123);
   };
 
   return (
     <View>
-      {props.label ? <Text style={styles.label}>{props.label}</Text> : null}
-      <View style={styles.inputBox}>
-        {props.leftIconName ? (
-          <Ionicons name={props.leftIconName}></Ionicons>
-        ) : null}
-        <TextInput
-          {...props}
-          style={styles.input}
-          onFocus={onFoucs}></TextInput>
-      </View>
+      <Input
+        {...props}
+        labelStyle={[styles.label, props.labelStyle]}
+        inputContainerStyle={styles.inputContainer}
+        inputStyle={styles.input}
+        onFocus={onFoucs}></Input>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  inputBox: {
+  inputContainer: {
     borderWidth: 1,
-    paddingVertical: pxToDp(10),
+    borderColor: '#ddd',
+    borderRadius: 6,
+    height: 40,
     paddingHorizontal: pxToDp(20),
-    borderColor: '#CCC',
-    borderRadius: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
   },
   label: {
+    fontWeight: 'normal',
+    color: colors.grey3,
     marginBottom: pxToDp(10),
   },
   input: {
-    padding: 0,
-    flex: 1,
+    fontSize: pxToDp(28),
   },
 });
 

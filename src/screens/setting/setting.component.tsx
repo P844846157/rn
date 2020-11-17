@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { Divider, ListItem } from 'react-native-elements';
-import I18n, { setI18nLocale } from '../../i18n';
+import I18n, { setI18nLocale } from '@i18n';
 
 export const SettingScreen = ({ navigation }: any) => {
     const goLanguage = () => {

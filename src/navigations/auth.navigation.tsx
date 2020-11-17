@@ -4,7 +4,7 @@ import {
   StackNavigationProp,
   TransitionPresets,
 } from '@react-navigation/stack';
-import {SignInScreen} from '../screens/auth';
+import {SignInScreen} from '@screens/auth';
 import {RouteProp} from '@react-navigation/native';
 import {AppNavigatorParams} from './index.navigation';
 
