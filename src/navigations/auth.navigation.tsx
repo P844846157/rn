@@ -25,8 +25,8 @@ const AuthStackScreen = () => {
       headerMode="none"
       screenOptions={{
         cardStyle: {},
-        gestureEnabled: true, 
-        ...TransitionPresets.ModalSlideFromBottomIOS,
+        gestureEnabled: true,
+        ...TransitionPresets.ModalSlideFromBottomIOS
       }}>
       <Stack.Screen name="SignIn" component={SignInScreen} />
     </Stack.Navigator>

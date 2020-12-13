@@ -22,12 +22,11 @@ const AppNavigation = () => {
         headerMode="none"
         screenOptions={{
           cardStyle: {},
-          gestureEnabled: true,
           ...TransitionPresets.SlideFromRightIOS,
         }}>
-        <Stack.Screen
+        {/* <Stack.Screen
           name="BottomTab"
-          component={materialBottomTabScreen}></Stack.Screen>
+          component={materialBottomTabScreen}></Stack.Screen> */}
         <Stack.Screen
           name="HomeLayout"
           component={HomeStackScreen}></Stack.Screen>
@@ -36,6 +35,9 @@ const AppNavigation = () => {
           component={MineStackScreen}></Stack.Screen>
         <Stack.Screen
           name="AuthLayout"
+          options={{
+            ...TransitionPresets.ModalSlideFromBottomIOS,
+          }}
           component={AuthStackScreen}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

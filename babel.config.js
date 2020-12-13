@@ -36,6 +36,14 @@ module.exports = {
           {
             rootPathSuffix: "./src/utils",
             rootPathPrefix: "@utils"
+          },
+          {
+            rootPathSuffix: "./src/assets",
+            rootPathPrefix: "@assets"
+          },
+          {
+            rootPathSuffix: "./src/styles",
+            rootPathPrefix: "@styles"
           }
         ]
       }

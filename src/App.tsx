@@ -11,11 +11,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import Navigation from './navigations/index.navigation';
+import { StatusBar } from 'react-native';
 
 
 const App = (props: any) => {
   return (
     <>
+      <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0)" barStyle="dark-content" />
       <Navigation />
     </>
   );

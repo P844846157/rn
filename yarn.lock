@@ -5908,7 +5908,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npm.taobao.org/prop-types/download/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
@@ -6020,6 +6020,11 @@ react-native-paper@^4.4.0:
     color "^3.1.2"
     react-native-safe-area-view "^0.14.9"
 
+react-native-pwd-input@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npm.taobao.org/react-native-pwd-input/download/react-native-pwd-input-1.0.1.tgz#b87ac9119ddbf0d61829c7a1afe849cd2c9f20f5"
+  integrity sha1-uHrJEZ3b8NYYKcehr+hJzSyfIPU=
+
 react-native-ratings@^7.3.0:
   version "7.3.0"
   resolved "https://registry.npm.taobao.org/react-native-ratings/download/react-native-ratings-7.3.0.tgz#32e11e4ed944ba8adbbc995d601df3f131619b6f"
@@ -6069,6 +6074,13 @@ react-native-storage@^1.0.1:
   dependencies:
     opencollective "^1.0.3"
     opencollective-postinstall "^2.0.2"
+
+react-native-swiper@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.npm.taobao.org/react-native-swiper/download/react-native-swiper-1.6.0.tgz#59fdbdf95addee49630312f27077622c27776819"
+  integrity sha1-Wf29+Vrd7kljAxLycHdiLCd3aBk=
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-vector-icons@^7.1.0:
   version "7.1.0"
