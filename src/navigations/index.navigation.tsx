@@ -79,7 +79,7 @@ const AppNavigation = () => {
         </>
       );
     } else {
-      return state?.userInfo ? (
+      return state.userInfo?.phone ? (
         <>
           <Stack.Screen
             name="HomeLayout"
