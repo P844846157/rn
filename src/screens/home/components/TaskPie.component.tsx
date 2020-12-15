@@ -1,21 +1,13 @@
-import {pBackgroundImageStyles} from '@/styles/background-image';
 import pxToDp from '@/utils/pxToDp';
 import React from 'react';
 import {
-  Dimensions,
   ImageBackground,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import Svg from 'react-native-svg';
 import {
-  VictoryBar,
-  VictoryChart,
-  VictoryLabel,
-  VictoryLegend,
   VictoryPie,
-  VictoryScatter,
   VictoryTheme,
 } from 'victory-native';
 
