@@ -9,5 +9,8 @@ export const pColorStyles = StyleSheet.create({
     },
     grey: {
         color: '#7A7C7D',
+    },
+    white: {
+        color: '#FFF'
     }
 });

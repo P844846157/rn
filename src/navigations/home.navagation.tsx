@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createStackNavigator, StackHeaderProps, StackScreenProps } from '@react-navigation/stack';
 import { HomeScreen } from '@/screens/home';
 import { Image, Pressable, View } from 'react-native';
@@ -16,7 +16,7 @@ const HomeStackScreen = ({ navigation }: any) => {
                 headerRightContainerStyle: {
                     paddingRight: pxToDp(32)
                 },
-                headerRight: (props) => (
+                headerRight: () => (
                     <Pressable onPress={() => navigation.push('AuthLayout', { screen: 'SignIn' })}>
                         <Image
                             source={require('../assets/images/icons/icon_settings.png')}></Image>

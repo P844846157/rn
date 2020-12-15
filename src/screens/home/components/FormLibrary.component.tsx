@@ -23,7 +23,7 @@ const FormLibrary = () => {
             </View>
             <View style={styles.item}>
                 <Image style={styles.icon} source={require('../../../assets/images/icons/icon_Labour_Return.png')}></Image>
-                <Text style={styles.text}>Site Labour Return</Text>
+                <Text style={styles.text}>Labour Return</Text>
             </View>
         </ScrollView>
     )
