@@ -13,6 +13,7 @@ import {
   SIGN_OUT,
 } from '@/reducer/auth.reducer';
 import {AuthContext} from '@/provider/auth.provider';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 export type AppNavigatorParams = {
   BottomTab: undefined;
@@ -102,22 +103,24 @@ const AppNavigation = () => {
   };
 
   return (
-    <NavigationContainer>
-      <AuthContext.Provider value={authContext}>
-        <Stack.Navigator
-          headerMode="none"
-          // mode="card"
-          screenOptions={{
-            cardStyle: {},
-            ...TransitionPresets.SlideFromRightIOS,
-          }}>
-          {/* <Stack.Screen
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <AuthContext.Provider value={authContext}>
+          <Stack.Navigator
+            headerMode="none"
+            // mode="card"
+            screenOptions={{
+              cardStyle: {},
+              ...TransitionPresets.SlideFromRightIOS,
+            }}>
+            {/* <Stack.Screen
           name="BottomTab"
           component={materialBottomTabScreen}></Stack.Screen> */}
-          {screenRender()}
-        </Stack.Navigator>
-      </AuthContext.Provider>
-    </NavigationContainer>
+            {screenRender()}
+          </Stack.Navigator>
+        </AuthContext.Provider>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

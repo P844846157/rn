@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Pressable,
   StatusBar,
+  Platform,
 } from 'react-native';
 import {Button, Text} from 'react-native-elements';
 import PInput from '@components/PInput';
@@ -100,6 +101,7 @@ export const SignInScreen = (props: any) => {
                 <PInput
                   secureTextEntry={passwordVisible}
                   label="Password"
+                  keyboardType={Platform.OS == 'ios' ? 'ascii-capable' : 'visible-password'}
                   value={form.password}
                   onChangeText={(password: string) =>
                     setForm(Object.assign({}, form, {password}))
