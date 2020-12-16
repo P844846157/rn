@@ -44,13 +44,14 @@ export const HomeScreen = ({navigation}: any) => {
   return (
     <>
       <StatusBar
+        translucent
         backgroundColor="rgba(0, 0, 0, 0)"
         barStyle="dark-content"
       />
-      <SafeAreaView>
-        <ImageBackground
-          source={require('../../assets/images/home/img_landing_background.png')}
-          style={pBackgroundImageStyles.fullBg}>
+      <ImageBackground
+        source={require('../../assets/images/home/img_landing_background.png')}
+        style={pBackgroundImageStyles.fullBg}>
+        <SafeAreaView style={{flex: 1, backgroundColor: 'rgba(0, 0, 0, 0)'}}>
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={[styles.containter, {marginTop: pxToDp(headerHeight)}]}>
@@ -86,8 +87,8 @@ export const HomeScreen = ({navigation}: any) => {
             <Image
               source={require('../../assets/images/icons/icon_add.png')}></Image>
           </View>
-        </ImageBackground>
-      </SafeAreaView>
+        </SafeAreaView>
+      </ImageBackground>
     </>
   );
 };
