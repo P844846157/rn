@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -10,15 +10,16 @@ import {
   StatusBar,
   Platform,
 } from 'react-native';
-import {Button, Text} from 'react-native-elements';
+import { Button, Text } from 'react-native-elements';
 import PInput from '@components/PInput';
 import pxToDp from '@utils/pxToDp';
-import {pColorStyles} from '@/styles/color';
+import { pColorStyles } from '@/styles/color';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {pBackgroundImageStyles} from '@/styles/background-image';
-import {WToast} from 'react-native-smart-tip';
-import {pButtonStyles} from '@/styles/button';
-import {AuthContext} from '@/provider/auth.provider';
+import { pBackgroundImageStyles } from '@/styles/background-image';
+import { WToast } from 'react-native-smart-tip';
+import { pButtonStyles } from '@/styles/button';
+import { AuthContext } from '@/provider/auth.provider';
+import PSubmitButton from '@/components/PSubmitButton';
 
 interface Form {
   phone?: string;
@@ -29,11 +30,11 @@ export const SignInScreen = (props: any) => {
   const [form, setForm] = useState<Form>({});
   const [valid, setValid] = useState<Boolean>(false);
   const [passwordVisible, setPasswordVisible] = useState(true);
-  const {signIn} = useContext(AuthContext);
-  
+  const { signIn } = useContext(AuthContext);
+
   const formRules = [
-    {name: 'phone', rules: [{required: true, message: '请输入账号'}]},
-    {name: 'password', rules: [{required: true, message: '请输入密码'}]},
+    { name: 'phone', rules: [{ required: true, message: '请输入账号' }] },
+    { name: 'password', rules: [{ required: true, message: '请输入密码' }] },
   ];
 
   useEffect(() => {
@@ -54,7 +55,7 @@ export const SignInScreen = (props: any) => {
   };
 
   const goHome = () => {
-    props.navigation.navigate('HomeLayout', {screen: 'Home'});
+    props.navigation.navigate('HomeLayout', { screen: 'Home' });
   };
 
   // 密码框右侧图标
@@ -66,13 +67,13 @@ export const SignInScreen = (props: any) => {
         name="eye-outline"></Ionicons>
     </Pressable>
   ) : (
-    <Pressable onPress={() => setPasswordVisible(true)}>
-      <Ionicons
-        color={pColorStyles.themeColor.color}
-        size={pxToDp(48)}
-        name="eye-off-outline"></Ionicons>
-    </Pressable>
-  );
+      <Pressable onPress={() => setPasswordVisible(true)}>
+        <Ionicons
+          color={pColorStyles.themeColor.color}
+          size={pxToDp(48)}
+          name="eye-off-outline"></Ionicons>
+      </Pressable>
+    );
 
   return (
     <>
@@ -96,28 +97,25 @@ export const SignInScreen = (props: any) => {
                   label="Email address/Phone no."
                   value={form.phone}
                   onChangeText={(phone: string) =>
-                    setForm(Object.assign({}, form, {phone}))
+                    setForm(Object.assign({}, form, { phone }))
                   }></PInput>
                 <PInput
                   secureTextEntry={passwordVisible}
                   label="Password"
-                  keyboardType={Platform.OS == 'ios' ? 'ascii-capable' : 'visible-password'}
+                  keyboardType={Platform.OS == 'ios' ? 'ascii-capable' : 'default'}
                   value={form.password}
                   onChangeText={(password: string) =>
-                    setForm(Object.assign({}, form, {password}))
+                    setForm(Object.assign({}, form, { password }))
                   }
                   rightIcon={passwrodRightIcon}></PInput>
                 <Text style={[pColorStyles.themeColor, styles.forgot]}>
                   Forgot Password ?
                 </Text>
               </View>
-              <Button
+              <PSubmitButton
                 disabled={!valid}
-                disabledStyle={pButtonStyles.disabledSubmit}
-                disabledTitleStyle={pColorStyles.white}
-                titleStyle={pColorStyles.white}
                 title="Sign In"
-                onPress={sign}></Button>
+                onPress={sign}></PSubmitButton>
             </View>
           </TouchableWithoutFeedback>
         </KeyboardAvoidingView>

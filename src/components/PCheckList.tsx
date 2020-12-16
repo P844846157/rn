@@ -26,6 +26,7 @@ const PCheckList = (props: PcheckListProps) => {
 
   useEffect(() => {
     const item = props.options.find((item) => item.value === value);
+    if(item?.value == value) return;
     setValue(item?.value || null);
   }, []);
 
@@ -37,7 +38,7 @@ const PCheckList = (props: PcheckListProps) => {
           style={styles.item}
           onPress={() => setValue(item.value)}>
           <Text style={styles.label}>
-            {item.label} {item.check}
+            {item.label}
           </Text>
 
           {item.value == value ? (

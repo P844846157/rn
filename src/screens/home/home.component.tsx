@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   ImageBackground,
   Pressable,
@@ -9,37 +9,42 @@ import {
   ScrollView,
   StatusBar,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import TaskSwiper from './components/TaskSwiper.component';
-import {pBackgroundImageStyles} from '@/styles/background-image';
-import {pColorStyles} from '@/styles/color';
-import {pFontStyles} from '@/styles/font';
+import { pBackgroundImageStyles } from '@/styles/background-image';
+import { pColorStyles } from '@/styles/color';
+import { pFontStyles } from '@/styles/font';
 import pxToDp from '@/utils/pxToDp';
-import {getUserInfo} from '@/utils/userInfo';
+import { getUserInfo } from '@/utils/userInfo';
 import TaskPie from './components/TaskPie.component';
-import {useHeaderHeight} from '@react-navigation/stack';
+import { useHeaderHeight } from '@react-navigation/stack';
 import FormLibrary from './components/FormLibrary.component';
-import {AuthContext} from '@/provider/auth.provider';
+import { AuthContext } from '@/provider/auth.provider';
 
-export const HomeScreen = ({navigation}: any) => {
+export const HomeScreen = ({ navigation }: any) => {
   // 顶部高度
   const headerHeight = useHeaderHeight();
   const [userInfo, setUserInfo] = useState<any>({});
-  const {signOut} = useContext(AuthContext);
+  const { signOut } = useContext(AuthContext);
 
   useEffect(() => {
     const initData = async () => {
       try {
         const u = await getUserInfo();
         setUserInfo(u);
-      } catch (e) {}
+      } catch (e) { }
     };
     initData();
   }, []);
 
-  const goSignIn = async () => {
-    navigation.push('HomeLayout', {screen: 'SelectProject'});
+  const goSignIn = () => {
+    navigation.push('HomeLayout', { screen: 'SelectProject', params: { projectId: '1' } });
   };
+
+  const logOut = async () => {
+    await signOut();
+    navigation.navigate('AuthLayout', { screen: 'Login' });
+  }
 
   return (
     <>
@@ -51,17 +56,17 @@ export const HomeScreen = ({navigation}: any) => {
       <ImageBackground
         source={require('../../assets/images/home/img_landing_background.png')}
         style={pBackgroundImageStyles.fullBg}>
-        <SafeAreaView style={{flex: 1, backgroundColor: 'rgba(0, 0, 0, 0)'}}>
+        <SafeAreaView style={{ flex: 1 }}>
           <ScrollView
             showsVerticalScrollIndicator={false}
-            style={[styles.containter, {marginTop: pxToDp(headerHeight)}]}>
+            style={[styles.containter, { marginTop: pxToDp(headerHeight) }]}>
             <View style={styles.pdHor}>
               <Text style={pColorStyles.grey}>
                 Welcome back to {userInfo.phone}
               </Text>
               <Pressable style={styles.projectBox} onPress={goSignIn}>
                 <Text style={[pFontStyles.weightBold, styles.project]}>
-                  J3668-Development Project{' '}
+                  J3668-Development Project
                 </Text>
                 <Image
                   source={require('../../assets/images/icons/icon_drop_down.png')}></Image>
@@ -83,10 +88,9 @@ export const HomeScreen = ({navigation}: any) => {
               <FormLibrary></FormLibrary>
             </View>
           </ScrollView>
-          <View style={styles.fixed}>
-            <Image
-              source={require('../../assets/images/icons/icon_add.png')}></Image>
-          </View>
+          <Pressable style={styles.fixed} onPress={logOut}>
+            <Image source={require('../../assets/images/icons/icon_add.png')}></Image>
+          </Pressable>
         </SafeAreaView>
       </ImageBackground>
     </>

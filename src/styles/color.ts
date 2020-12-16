@@ -7,6 +7,9 @@ export const pColorStyles = StyleSheet.create({
     themeColor1: {
         color: '#0068A6',
     },
+    themeDisabledColor1: {
+        color: '#A2CBE2',
+    },
     grey: {
         color: '#7A7C7D',
     },

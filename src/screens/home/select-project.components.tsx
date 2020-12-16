@@ -1,18 +1,25 @@
 import PCheckList from '@/components/PCheckList';
-import {pBackgroundImageStyles} from '@/styles/background-image';
-import {pColorStyles} from '@/styles/color';
-import {pFontStyles} from '@/styles/font';
+import PSubmitButton from '@/components/PSubmitButton';
+import { ProjectReducer, projectState, SET_PROJECT } from '@/reducer/project.reducer';
+import { pBackgroundImageStyles } from '@/styles/background-image';
+import { pButtonStyles } from '@/styles/button';
+import { pColorStyles } from '@/styles/color';
+import { pFontStyles } from '@/styles/font';
 import pxToDp from '@/utils/pxToDp';
-import {useHeaderHeight} from '@react-navigation/stack';
-import React from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
-import {Button, CheckBox} from 'react-native-elements';
-import {color} from 'react-native-reanimated';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import { ParamListBase, RouteProp, useRoute } from '@react-navigation/native';
+import { useHeaderHeight } from '@react-navigation/stack';
+import React, { useReducer, useState } from 'react';
+import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { Button, CheckBox } from 'react-native-elements';
+import { color } from 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const SelectProjectScreen = ({navigation}: any) => {
+export const SelectProjectScreen = ({ navigation }: any) => {
+  const route: any = useRoute();
+  const [projectId, setProjectId] = useState(route.params.projectId);
+
   const checkList = [
-    {label: 'J3668-Development Project', value: '1'},
+    { label: 'J3668-Development Project', value: '1' },
     {
       label: 'Kwun Tong Town Centre Project',
       value: '2',
@@ -24,12 +31,23 @@ export const SelectProjectScreen = ({navigation}: any) => {
   ];
   const headerHeight = useHeaderHeight();
 
+  const comfrim = async () => {
+
+    // await global.stroage.save({
+    //   key: 'project',
+    //   data: current,
+    //   expires: null,
+    // });
+    navigation.goBack();
+  }
+
   return (
-    <SafeAreaView>
-      <ImageBackground
-        source={require('../../assets/images/img_welcome_backgrounnd.png')}
-        style={pBackgroundImageStyles.fullBg}>
-        <View style={[styles.containter, {marginTop: pxToDp(headerHeight)}]}>
+
+    <ImageBackground
+      source={require('../../assets/images/img_welcome_backgrounnd.png')}
+      style={pBackgroundImageStyles.fullBg}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={[styles.containter, { marginTop: pxToDp(headerHeight) }]}>
           <View>
             <Text style={[styles.title, pFontStyles.weightBold]}>
               Select Project
@@ -38,16 +56,16 @@ export const SelectProjectScreen = ({navigation}: any) => {
             <View style={styles.list}>
               <PCheckList
                 options={checkList}
-                value="2"
+                value={projectId}
                 onChange={(e: any) => {
-                  console.log(e);
+                 
                 }}></PCheckList>
             </View>
           </View>
-          <Button buttonStyle={styles.confrim} title="Confirm"></Button>
+          <PSubmitButton title="Confirm" onPress={comfrim}></PSubmitButton>
         </View>
-      </ImageBackground>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
@@ -65,9 +83,5 @@ const styles = StyleSheet.create({
   },
   list: {
     marginTop: pxToDp(100),
-  },
-  confrim: {
-    backgroundColor: pColorStyles.themeColor1.color,
-    height: pxToDp(100),
   },
 });

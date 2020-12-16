@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen, SelectProjectScreen} from '@/screens/home';
-import {Image, Pressable} from 'react-native';
+import React, { useEffect } from 'react';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
+import { HomeScreen, SelectProjectScreen } from '@/screens/home';
+import { Image, Pressable } from 'react-native';
 import pxToDp from '@/utils/pxToDp';
 
 const Stack = createStackNavigator();
@@ -14,9 +14,10 @@ const screenOptions = {
   headerLeftContainerStyle: {
     paddingLeft: pxToDp(32),
   },
+  cardStyle: {},
 };
 
-const HomeStackScreen = ({navigation}: any) => {
+const HomeStackScreen = ({ navigation }: any) => {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
       <Stack.Screen
