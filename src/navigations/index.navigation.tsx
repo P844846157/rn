@@ -106,6 +106,7 @@ const AppNavigation = () => {
       <AuthContext.Provider value={authContext}>
         <Stack.Navigator
           headerMode="none"
+          // mode="card"
           screenOptions={{
             cardStyle: {},
             ...TransitionPresets.SlideFromRightIOS,
