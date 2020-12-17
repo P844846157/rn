@@ -9,11 +9,12 @@
  */
 
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Navigation from './navigations/index.navigation';
-import {StatusBar} from 'react-native';
+import { Provider } from 'react-redux';
+import { StatusBar } from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import {SafeAreaView} from 'react-navigation';
+import stores from "@/stores";
 
 import '@utils/stroage.ts';
 
@@ -23,14 +24,14 @@ const App = (props: any) => {
   }, []);
 
   return (
-    <>
+    <Provider store={stores}>
       <StatusBar
         translucent
         backgroundColor="rgba(0, 0, 0, 0)"
         barStyle="dark-content"
       />
       <Navigation />
-    </>
+    </Provider>
   );
 };
 

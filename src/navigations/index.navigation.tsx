@@ -11,7 +11,7 @@ import {
   RESTORE_USER_INFO,
   SIGN_IN,
   SIGN_OUT,
-} from '@/reducer/auth.reducer';
+} from './reducer/auth.reducer';
 import {AuthContext} from '@/provider/auth.provider';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
@@ -113,9 +113,6 @@ const AppNavigation = () => {
               cardStyle: {},
               ...TransitionPresets.SlideFromRightIOS,
             }}>
-            {/* <Stack.Screen
-          name="BottomTab"
-          component={materialBottomTabScreen}></Stack.Screen> */}
             {screenRender()}
           </Stack.Navigator>
         </AuthContext.Provider>

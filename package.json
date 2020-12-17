@@ -17,6 +17,7 @@
     "@react-navigation/material-bottom-tabs": "^5.3.9",
     "@react-navigation/native": "^5.8.9",
     "@react-navigation/stack": "^5.12.6",
+    "@types/react-redux": "^7.1.12",
     "install": "^0.13.0",
     "rc-form": "https://github.com/crazyCode2/rc-form",
     "react": "16.13.1",
@@ -35,6 +36,9 @@
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^7.1.0",
     "react-navigation": "^4.4.3",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "victory-native": "^35.3.1"
   },
   "devDependencies": {

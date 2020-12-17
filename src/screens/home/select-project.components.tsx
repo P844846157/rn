@@ -1,22 +1,19 @@
 import PCheckList from '@/components/PCheckList';
 import PSubmitButton from '@/components/PSubmitButton';
-import { ProjectReducer, projectState, SET_PROJECT } from '@/reducer/project.reducer';
 import { pBackgroundImageStyles } from '@/styles/background-image';
-import { pButtonStyles } from '@/styles/button';
-import { pColorStyles } from '@/styles/color';
 import { pFontStyles } from '@/styles/font';
 import pxToDp from '@/utils/pxToDp';
-import { ParamListBase, RouteProp, useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 import { useHeaderHeight } from '@react-navigation/stack';
-import React, { useReducer, useState } from 'react';
+import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, Text, View } from 'react-native';
-import { Button, CheckBox } from 'react-native-elements';
-import { color } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { updateProject } from '@/actions';
+import { RootReducerProps } from '@/reducers';
 
-export const SelectProjectScreen = ({ navigation }: any) => {
-  const route: any = useRoute();
-  const [projectId, setProjectId] = useState(route.params.projectId);
+export const SelectProject = ({ navigation, project, dispatch }: any) => {
 
   const checkList = [
     { label: 'J3668-Development Project', value: '1' },
@@ -32,12 +29,6 @@ export const SelectProjectScreen = ({ navigation }: any) => {
   const headerHeight = useHeaderHeight();
 
   const comfrim = async () => {
-
-    // await global.stroage.save({
-    //   key: 'project',
-    //   data: current,
-    //   expires: null,
-    // });
     navigation.goBack();
   }
 
@@ -56,9 +47,10 @@ export const SelectProjectScreen = ({ navigation }: any) => {
             <View style={styles.list}>
               <PCheckList
                 options={checkList}
-                value={projectId}
+                value={project.value}
                 onChange={(e: any) => {
-                 
+                  let item = checkList.find(item => item.value == e);
+                  dispatch.updateProject(item);
                 }}></PCheckList>
             </View>
           </View>
@@ -85,3 +77,17 @@ const styles = StyleSheet.create({
     marginTop: pxToDp(100),
   },
 });
+
+const mapStateToProps = (state: RootReducerProps) => {
+  return {
+    project: state.projectReducer,
+  }
+}
+
+const mapDispatchToProps = (dispatch: any)=> {
+  return {
+    dispatch: bindActionCreators({ updateProject }, dispatch)
+  }
+}
+
+export const SelectProjectScreen: any = connect(mapStateToProps, mapDispatchToProps)(SelectProject);

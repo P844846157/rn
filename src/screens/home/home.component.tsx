@@ -20,13 +20,14 @@ import TaskPie from './components/TaskPie.component';
 import { useHeaderHeight } from '@react-navigation/stack';
 import FormLibrary from './components/FormLibrary.component';
 import { AuthContext } from '@/provider/auth.provider';
+import { connect } from 'react-redux';
+import { RootReducerProps } from '@/reducers';
 
-export const HomeScreen = ({ navigation }: any) => {
+const Home = ({ navigation, project, actions }: any) => {
   // 顶部高度
   const headerHeight = useHeaderHeight();
   const [userInfo, setUserInfo] = useState<any>({});
   const { signOut } = useContext(AuthContext);
-
   useEffect(() => {
     const initData = async () => {
       try {
@@ -38,7 +39,7 @@ export const HomeScreen = ({ navigation }: any) => {
   }, []);
 
   const goSignIn = () => {
-    navigation.push('HomeLayout', { screen: 'SelectProject', params: { projectId: '1' } });
+    navigation.push('HomeLayout', { screen: 'SelectProject' });
   };
 
   const logOut = async () => {
@@ -66,7 +67,7 @@ export const HomeScreen = ({ navigation }: any) => {
               </Text>
               <Pressable style={styles.projectBox} onPress={goSignIn}>
                 <Text style={[pFontStyles.weightBold, styles.project]}>
-                  J3668-Development Project
+                  {project.label}
                 </Text>
                 <Image
                   source={require('../../assets/images/icons/icon_drop_down.png')}></Image>
@@ -138,3 +139,11 @@ const styles = StyleSheet.create({
     borderRadius: pxToDp(120),
   },
 });
+
+const mapStateToProps = (state: RootReducerProps) => {
+  return {
+    project: state.projectReducer,
+  }
+}
+
+export const HomeScreen: any = connect(mapStateToProps)(Home);
